@@ -12,8 +12,8 @@ public class RpsRunner {
         name = scanner.nextLine();
 
         System.out.println("How many rounds do you want to play?");
-        int roundsAmount;
-        roundsAmount = scanner.nextInt();
+        String roundsAmount;
+        roundsAmount = scanner.nextLine();
 
         System.out.println("Hi " + name + ". You will play " + roundsAmount + " rounds \n" +
                 "The game uses below keys: \n" +
@@ -27,7 +27,8 @@ public class RpsRunner {
         String key;
         key = scanner.nextLine();
 
-
+        Validator validator = new Validator();
+        validator.validateInput(key);
 
 
     }
