@@ -4,7 +4,10 @@ import java.util.Scanner;
 
 public class RpsRunner {
 
+
     public static void main (String[] args) {
+
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome in Rock-Paper-Scissors game! \n" +
                             "Please insert your name");
@@ -24,12 +27,19 @@ public class RpsRunner {
                 "Key n - restart game \n" +
                 "------Select------");
 
-        String key;
-        key = scanner.nextLine();
+        int round = Integer.parseInt(roundsAmount);
 
-        Validator validator = new Validator();
-        validator.validateInput(key);
+        for (int i = 1; i <= round; i++) {
 
+            String key;
+            key = scanner.nextLine();
+
+            Validator validator = new Validator();
+            validator.validateInput(key);
+
+         System.out.println("Round: " + i);
+
+        }
 
     }
 

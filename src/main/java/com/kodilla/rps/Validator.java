@@ -7,45 +7,73 @@ public class Validator {
     private String paper = "1";
     private String rock = "2";
     private String scissors = "3";
+
     private String endGame = "x";
     private String restartGame = "n";
-    private String computersMove;
 
 
     public String getComputersMove() {
-
+        String randomResult = "";
         Random random = new Random();
         int select = random.nextInt(99);
 
         if (select >= 0 && select < 33) {
-            computersMove = paper;
+            randomResult = paper;
         } else if (select >= 33 && select < 66) {
-            computersMove = rock;
+            randomResult = rock;
         } else if (select >= 66 && select < 100) {
-            computersMove = scissors;
+            randomResult = scissors;
         }
-        return computersMove;
+        return randomResult;
     }
 
     public void validateInput(String key) {
 
-        /*if () {
-            x
-        } else if () {
-            n */
+        String computersMove = getComputersMove();
 
-        if (key.equals(getComputersMove())) {
-            System.out.println("DRAW");
-        } else if ((key.equals(paper) && getComputersMove().equals(rock)) ||
-                (key.equals(rock) && getComputersMove().equals(scissors))) {
-            System.out.println("You won");
-        } else if ((key.equals(rock) && getComputersMove().equals(paper)) ||
-                (key.equals(scissors) && getComputersMove().equals(rock))) {
-            System.out.println("You lost");
+        if (key.equals(endGame)) {
+            System.exit(0);
+        } else if (key.equals(computersMove)) {
+            System.out.println("Result: draw");
+        } else if (
+                (key.equals(paper) && computersMove.equals(rock)) ||
+                (key.equals(rock) && computersMove.equals(scissors)) ||
+                (key.equals(scissors) && computersMove.equals(paper)))
+                {
+            System.out.println("Result: you won");
+        } else if (
+                (key.equals(paper) && computersMove.equals(scissors)) ||
+                (key.equals(rock) && computersMove.equals(paper)) ||
+                (key.equals(scissors) && computersMove.equals(rock))) {
+            System.out.println("Result: you lost");
         }
 
-        System.out.println(key);
-        System.out.println(computersMove);
+        String gamerResult = "";
+        String computerResult = "";
+
+        switch (key) {
+            case "1": gamerResult = "paper";
+                break;
+            case "2": gamerResult = "rock";
+                break;
+            case "3": gamerResult = "scissors";
+                break;
+        }
+
+
+        switch (computersMove) {
+            case "1": computerResult = "paper";
+                break;
+            case "2": computerResult = "rock";
+                break;
+            case "3": computerResult = "scissors";
+                break;
+        }
+
+
+        System.out.println("Your move: " + gamerResult);
+        System.out.println("Computer's move: " + computerResult);
+
 
     }
 }
